@@ -85,7 +85,8 @@ LEFT JOIN trenerzy AS t ON t.id = k.trenerId
 LEFT JOIN sztuki_walki AS sw ON sw.id = k.sztuki_walkid
 LEFT JOIN poziomy AS p ON p.id = k.poziomId
 
--- 11
+
+-- 11 èLE
 -- Sprawdzanie, czy dla kaødych wpisanych zajÍÊ istnieje przynajmniej jeden uczestnik
 SELECT zajecia
 FROM zajecia AS z 

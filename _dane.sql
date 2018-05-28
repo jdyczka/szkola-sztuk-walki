@@ -11,14 +11,14 @@ SELECT * FROM SSW..sztuki_walki
 
 ------------------------------------------------------------------------
 
-INSERT INTO SSW..poziomy VALUES ('Poczπtkujπcy');
-INSERT INTO SSW..poziomy VALUES ('årednio zaawansowany');
+INSERT INTO SSW..poziomy VALUES ('PoczƒÖtkujƒÖcy');
+INSERT INTO SSW..poziomy VALUES ('≈örednio zaawansowany');
 INSERT INTO SSW..poziomy VALUES ('Zaawansowany');
 SELECT * FROM SSW..poziomy
 
 ------------------------------------------------------------------------
-INSERT INTO SSW..trenerzy VALUES ('Piotr', 'RabÍcki', 'prabecki@onet.pl', '501501501', NULL, '1999-03-15', NULL, 30.00 );
-INSERT INTO SSW..trenerzy VALUES ('Robert', 'SmoliÒski', 'rsmolinski@gmail.pl', '502502502', 1, '2000-10-12', NULL, 35.00 );
+INSERT INTO SSW..trenerzy VALUES ('Piotr', 'Rabƒôcki', 'prabecki@onet.pl', '501501501', NULL, '1999-03-15', NULL, 30.00 );
+INSERT INTO SSW..trenerzy VALUES ('Robert', 'Smoli≈Ñski', 'rsmolinski@gmail.pl', '502502502', 1, '2000-10-12', NULL, 35.00 );
 INSERT INTO SSW..trenerzy VALUES ('Sylwia', 'Trzeszczak', 'strzeszczak@interia.pl', '503503503', 1, '2002-04-03', NULL, 40.00 );
 INSERT INTO SSW..trenerzy VALUES ('Tomasz', 'Ulatowski', 'tulatowski@gmail.pl', '504504504', 1, '2005-08-25', NULL, 50.00 );
 INSERT INTO SSW..trenerzy VALUES ('Urszula', 'Wieteska', 'uwieteska@onet.pl', '505505505', 1, '1998-07-08', NULL, 50.00 );
@@ -32,87 +32,87 @@ INSERT INTO SSW..trenerzyArchiwum VALUES (11, 'Yan', 'Xandinho', 'yxan@onet.pl',
 SELECT * FROM SSW..trenerzyArchiwum
 
 ------------------------------------------------------------------------
-INSERT INTO SSW..dni_tygodnia VALUES ('PN', 'Poniedzia≥ek');
+INSERT INTO SSW..dni_tygodnia VALUES ('PN', 'Poniedzia≈Çek');
 INSERT INTO SSW..dni_tygodnia VALUES ('WT', 'Wtorek');
-INSERT INTO SSW..dni_tygodnia VALUES ('åR', 'åroda');
+INSERT INTO SSW..dni_tygodnia VALUES ('≈öR', '≈öroda');
 INSERT INTO SSW..dni_tygodnia VALUES ('CZ', 'Czwartek');
-INSERT INTO SSW..dni_tygodnia VALUES ('PT', 'Piπtek');
+INSERT INTO SSW..dni_tygodnia VALUES ('PT', 'PiƒÖtek');
 INSERT INTO SSW..dni_tygodnia VALUES ('SB', 'Sobota');
 INSERT INTO SSW..dni_tygodnia VALUES ('NDZ', 'Niedziela');
 SELECT * FROM SSW..dni_tygodnia
 
 ------------------------------------------------------------------------
-INSERT INTO SSW..sale VALUES ('ma≥a', '25');
-INSERT INTO SSW..sale VALUES ('duøa', '40');
+INSERT INTO SSW..sale VALUES ('ma≈Ça', '25');
+INSERT INTO SSW..sale VALUES ('du≈ºa', '40');
 SELECT * FROM SSW..sale
 
 ------------------------------------------------------------------------
-INSERT INTO SSW..zajecia VALUES ('KF', 1, 1, 'ma≥a', 'PN', '16:15:00');
-INSERT INTO SSW..zajecia VALUES ('KF', 2, 1, 'ma≥a', 'PN', '18:00:00');
-INSERT INTO SSW..zajecia VALUES ('K', 3, 2, 'ma≥a', 'PN', '19:45:00');
-INSERT INTO SSW..zajecia VALUES ('K', 1, 2, 'ma≥a', 'WT', '16:15:00');
-INSERT INTO SSW..zajecia VALUES ('K', 2, 2, 'ma≥a', 'WT', '18:00:00');
-INSERT INTO SSW..zajecia VALUES ('KF', 3, 1, 'ma≥a', 'WT', '19:45:00');
+INSERT INTO SSW..zajecia VALUES ('KF', 1, 1, 'ma≈Ça', 'PN', '16:15:00');
+INSERT INTO SSW..zajecia VALUES ('KF', 2, 1, 'ma≈Ça', 'PN', '18:00:00');
+INSERT INTO SSW..zajecia VALUES ('K', 3, 2, 'ma≈Ça', 'PN', '19:45:00');
+INSERT INTO SSW..zajecia VALUES ('K', 1, 2, 'ma≈Ça', 'WT', '16:15:00');
+INSERT INTO SSW..zajecia VALUES ('K', 2, 2, 'ma≈Ça', 'WT', '18:00:00');
+INSERT INTO SSW..zajecia VALUES ('KF', 3, 1, 'ma≈Ça', 'WT', '19:45:00');
 
-INSERT INTO SSW..zajecia VALUES ('J', 1, 3, 'duøa', 'PN', '16:15:00');
-INSERT INTO SSW..zajecia VALUES ('J', 2, 3, 'duøa', 'PN', '18:00:00');
-INSERT INTO SSW..zajecia VALUES ('C', 3, 5, 'duøa', 'PN', '19:45:00');
-INSERT INTO SSW..zajecia VALUES ('C', 1, 5, 'duøa', 'WT', '16:15:00');
-INSERT INTO SSW..zajecia VALUES ('C', 2, 5, 'duøa', 'WT', '18:00:00');
-INSERT INTO SSW..zajecia VALUES ('J', 3, 3, 'duøa', 'WT', '19:45:00');
+INSERT INTO SSW..zajecia VALUES ('J', 1, 3, 'du≈ºa', 'PN', '16:15:00');
+INSERT INTO SSW..zajecia VALUES ('J', 2, 3, 'du≈ºa', 'PN', '18:00:00');
+INSERT INTO SSW..zajecia VALUES ('C', 3, 5, 'du≈ºa', 'PN', '19:45:00');
+INSERT INTO SSW..zajecia VALUES ('C', 1, 5, 'du≈ºa', 'WT', '16:15:00');
+INSERT INTO SSW..zajecia VALUES ('C', 2, 5, 'du≈ºa', 'WT', '18:00:00');
+INSERT INTO SSW..zajecia VALUES ('J', 3, 3, 'du≈ºa', 'WT', '19:45:00');
 
-INSERT INTO SSW..zajecia VALUES ('A', 1, 4, 'ma≥a', 'åR', '16:15:00');
-INSERT INTO SSW..zajecia VALUES ('A', 2, 4, 'ma≥a', 'åR', '18:00:00');
-INSERT INTO SSW..zajecia VALUES ('TC', 3, 5, 'ma≥a', 'åR', '19:45:00');
-INSERT INTO SSW..zajecia VALUES ('TC', 1, 5, 'ma≥a', 'CZ', '16:15:00');
-INSERT INTO SSW..zajecia VALUES ('TC', 2, 5, 'ma≥a', 'CZ', '18:00:00');
-INSERT INTO SSW..zajecia VALUES ('A', 3, 4, 'ma≥a', 'CZ', '19:45:00');
+INSERT INTO SSW..zajecia VALUES ('A', 1, 4, 'ma≈Ça', '≈öR', '16:15:00');
+INSERT INTO SSW..zajecia VALUES ('A', 2, 4, 'ma≈Ça', '≈öR', '18:00:00');
+INSERT INTO SSW..zajecia VALUES ('TC', 3, 5, 'ma≈Ça', '≈öR', '19:45:00');
+INSERT INTO SSW..zajecia VALUES ('TC', 1, 5, 'ma≈Ça', 'CZ', '16:15:00');
+INSERT INTO SSW..zajecia VALUES ('TC', 2, 5, 'ma≈Ça', 'CZ', '18:00:00');
+INSERT INTO SSW..zajecia VALUES ('A', 3, 4, 'ma≈Ça', 'CZ', '19:45:00');
 
-INSERT INTO SSW..zajecia VALUES ('T', 1, 4, 'duøa', 'åR', '16:15:00');
-INSERT INTO SSW..zajecia VALUES ('T', 2, 4, 'duøa', 'åR', '18:00:00');
-INSERT INTO SSW..zajecia VALUES ('JJ', 3, 3, 'duøa', 'åR', '19:45:00');
-INSERT INTO SSW..zajecia VALUES ('JJ', 1, 3, 'duøa', 'CZ', '16:15:00');
-INSERT INTO SSW..zajecia VALUES ('JJ', 2, 3, 'duøa', 'CZ', '18:00:00');
-INSERT INTO SSW..zajecia VALUES ('T', 3, 4, 'duøa', 'CZ', '19:45:00');
+INSERT INTO SSW..zajecia VALUES ('T', 1, 4, 'du≈ºa', '≈öR', '16:15:00');
+INSERT INTO SSW..zajecia VALUES ('T', 2, 4, 'du≈ºa', '≈öR', '18:00:00');
+INSERT INTO SSW..zajecia VALUES ('JJ', 3, 3, 'du≈ºa', '≈öR', '19:45:00');
+INSERT INTO SSW..zajecia VALUES ('JJ', 1, 3, 'du≈ºa', 'CZ', '16:15:00');
+INSERT INTO SSW..zajecia VALUES ('JJ', 2, 3, 'du≈ºa', 'CZ', '18:00:00');
+INSERT INTO SSW..zajecia VALUES ('T', 3, 4, 'du≈ºa', 'CZ', '19:45:00');
 
-INSERT INTO SSW..zajecia VALUES ('T', 1, 4, 'ma≥a', 'PT', '16:15:00');
-INSERT INTO SSW..zajecia VALUES ('T', 2, 4, 'ma≥a', 'PT', '18:00:00');
-INSERT INTO SSW..zajecia VALUES ('J', 1, 3, 'duøa', 'PT', '16:15:00');
-INSERT INTO SSW..zajecia VALUES ('J', 2, 3, 'duøa', 'PT', '18:00:00');
+INSERT INTO SSW..zajecia VALUES ('T', 1, 4, 'ma≈Ça', 'PT', '16:15:00');
+INSERT INTO SSW..zajecia VALUES ('T', 2, 4, 'ma≈Ça', 'PT', '18:00:00');
+INSERT INTO SSW..zajecia VALUES ('J', 1, 3, 'du≈ºa', 'PT', '16:15:00');
+INSERT INTO SSW..zajecia VALUES ('J', 2, 3, 'du≈ºa', 'PT', '18:00:00');
 
 SELECT * FROM SSW..zajecia
 
 ------------------------------------------------------------------------
 INSERT INTO SSW..uczestnicy VALUES ('Adam', 'Bednarski', 'M', '62102116371', '501712936');
 INSERT INTO SSW..uczestnicy VALUES ('Beata', 'Cedrowska', 'K', '09121323133', '502712936');
-INSERT INTO SSW..uczestnicy VALUES ('Cezary', 'D≥ugosz', 'M', '80090414815', '503712936');
+INSERT INTO SSW..uczestnicy VALUES ('Cezary', 'D≈Çugosz', 'M', '80090414815', '503712936');
 INSERT INTO SSW..uczestnicy VALUES ('Dorota', 'Epicka', 'K', '75072112319', '504712936');
-INSERT INTO SSW..uczestnicy VALUES ('Eløebita', 'Frπtczak', 'K', '82072703928', '505712936');
-INSERT INTO SSW..uczestnicy VALUES ('Franciszek', 'Go≥embiewski', 'M', '52082906752', '506712936');
-INSERT INTO SSW..uczestnicy VALUES ('Graøyna', 'Halicka', 'K', '53080202581', '507712936');
-INSERT INTO SSW..uczestnicy VALUES ('Henryk', 'IwaÒski', 'M', '95120916690', '508712936');
-INSERT INTO SSW..uczestnicy VALUES ('Irena', 'Jod≥owska', 'K', '95041909674', '509712936');
+INSERT INTO SSW..uczestnicy VALUES ('El≈ºebita', 'FrƒÖtczak', 'K', '82072703928', '505712936');
+INSERT INTO SSW..uczestnicy VALUES ('Franciszek', 'Go≈Çembiewski', 'M', '52082906752', '506712936');
+INSERT INTO SSW..uczestnicy VALUES ('Gra≈ºyna', 'Halicka', 'K', '53080202581', '507712936');
+INSERT INTO SSW..uczestnicy VALUES ('Henryk', 'Iwa≈Ñski', 'M', '95120916690', '508712936');
+INSERT INTO SSW..uczestnicy VALUES ('Irena', 'Jod≈Çowska', 'K', '95041909674', '509712936');
 INSERT INTO SSW..uczestnicy VALUES ('Jolanta', 'Kowalska', 'K', '73103013376', '510712936');
 INSERT INTO SSW..uczestnicy VALUES ('Krzysztof', 'Ludwisiak', 'M', '73031002152', '511712936');
-INSERT INTO SSW..uczestnicy VALUES ('Lena', '£ukasik', 'K', '97041324431', '512712936');
-INSERT INTO SSW..uczestnicy VALUES ('£ucja', 'Marczak', 'K', '58060210509', '513712936');
-INSERT INTO SSW..uczestnicy VALUES ('Miros≥aw', 'Nowak', 'M', '02102922499', '514712936');
+INSERT INTO SSW..uczestnicy VALUES ('Lena', '≈Åukasik', 'K', '97041324431', '512712936');
+INSERT INTO SSW..uczestnicy VALUES ('≈Åucja', 'Marczak', 'K', '58060210509', '513712936');
+INSERT INTO SSW..uczestnicy VALUES ('Miros≈Çaw', 'Nowak', 'M', '02102922499', '514712936');
 INSERT INTO SSW..uczestnicy VALUES ('Natalia', 'Olczak', 'K', '55021821196', '515712936');
 INSERT INTO SSW..uczestnicy VALUES ('Oleg', 'Pavlyshyn', 'M', '70051500699', '516712936');
 
 INSERT INTO SSW..uczestnicy VALUES ('Andrzej', 'Bednarski', 'M', '72102116371', '517712936');
 INSERT INTO SSW..uczestnicy VALUES ('Barbara', 'Cedrowska', 'K', '99011323133', '518712936');
-INSERT INTO SSW..uczestnicy VALUES ('Czes≥aw', 'D≥ugosz', 'M', '90090414815', '519712936');
+INSERT INTO SSW..uczestnicy VALUES ('Czes≈Çaw', 'D≈Çugosz', 'M', '90090414815', '519712936');
 INSERT INTO SSW..uczestnicy VALUES ('Dagmara', 'Epicka', 'K', '85072112319', '520712936');
-INSERT INTO SSW..uczestnicy VALUES ('Aliza', 'Frπtczak', 'K', '72072703928', '521712936');
-INSERT INTO SSW..uczestnicy VALUES ('Faustyn', 'Go≥embiewski', 'M', '62082906752', '522712936');
+INSERT INTO SSW..uczestnicy VALUES ('Aliza', 'FrƒÖtczak', 'K', '72072703928', '521712936');
+INSERT INTO SSW..uczestnicy VALUES ('Faustyn', 'Go≈Çembiewski', 'M', '62082906752', '522712936');
 INSERT INTO SSW..uczestnicy VALUES ('Gaja', 'Halicka', 'K', '63080202581', '523712936');
-INSERT INTO SSW..uczestnicy VALUES ('Horacy', 'IwaÒski', 'M', '85120916690', '524712936');
-INSERT INTO SSW..uczestnicy VALUES ('Irmina', 'Jod≥owska', 'K', '85041909674', '525712936');
+INSERT INTO SSW..uczestnicy VALUES ('Horacy', 'Iwa≈Ñski', 'M', '85120916690', '524712936');
+INSERT INTO SSW..uczestnicy VALUES ('Irmina', 'Jod≈Çowska', 'K', '85041909674', '525712936');
 INSERT INTO SSW..uczestnicy VALUES ('Jadwiga', 'Kowalska', 'K', '83103013376', '526712936');
 INSERT INTO SSW..uczestnicy VALUES ('Konstantty', 'Ludwisiak', 'M', '93031002152', '527712936');
-INSERT INTO SSW..uczestnicy VALUES ('Lara', '£ukasik', 'K', '87041324431', '528712936');
-INSERT INTO SSW..uczestnicy VALUES ('£ukasz', 'Marczak', 'M', '68060210509', '529712936');
+INSERT INTO SSW..uczestnicy VALUES ('Lara', '≈Åukasik', 'K', '87041324431', '528712936');
+INSERT INTO SSW..uczestnicy VALUES ('≈Åukasz', 'Marczak', 'M', '68060210509', '529712936');
 INSERT INTO SSW..uczestnicy VALUES ('Marek', 'Nowak', 'M', '92032922499', '530712936');
 INSERT INTO SSW..uczestnicy VALUES ('Nikola', 'Olczak', 'K', '65021821196', '531712936');
 INSERT INTO SSW..uczestnicy VALUES ('Olgierd', 'Piotrowicz', 'M', '80051500699', '532712936');
