@@ -1,4 +1,4 @@
---SZKO£A SZTUK WALKI 
+--SZKOLA SZTUK WALKI 
 --JOANNA DYCZKA, DOROTA SACHAJKO
 
 if exists(select 1 from master.dbo.sysdatabases where name = 'SSW') drop database SSW
@@ -59,7 +59,7 @@ CREATE TABLE SSW..dni_tygodnia (
 	nazwa	varchar(15)	NOT NULL,
 
 	CONSTRAINT dniTygodniaId_pk PRIMARY KEY (id),
-	CONSTRAINT dniTygodniaId_check CHECK (id IN ('PN', 'WT', 'ŒR', 'CZ', 'PT', 'SB', 'NDZ'))	
+	CONSTRAINT dniTygodniaId_check CHECK (id IN ('PN', 'WT', 'ï¿½R', 'CZ', 'PT', 'SB', 'NDZ'))	
 );
 GO
 
