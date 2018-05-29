@@ -1,6 +1,28 @@
 'use strict';
 
 const numberOfClients = 450;
+const qualifications = {
+    'KF': [3, 0, 1, 2, 0],
+    'K': [1, 3, 2, 0, 0],
+    'J': [1, 0, 3, 0, 3],
+    'A': [0, 1, 0, 3, 0],
+    'T': [1, 0, 0, 2, 3],
+    'TC': [0, 2, 0, 2, 0],
+    'JJ': [1, 0, 0, 0, 3],
+    'C': [0, 1, 0, 0, 3],
+};
+const roomS = 16;
+const roomL = 30;
+const roomsOccupied = [
+    3, 3, //PN
+    2, 3, //WT
+    2, 3, //SR
+    2, 3, //CZW
+    2, 3, //PT
+    1, 2, //SB
+    1, 1, //NDZ
+];
+
 
 var sql = `
 INSERT INTO SSW..sztuki_walki VALUES ('KF', 'kung-fu');
@@ -48,16 +70,65 @@ SELECT * FROM SSW..dni_tygodnia
 
 ------------------------------------------------------------------------
 
-INSERT INTO SSW..sale VALUES ('mała', '25');
-INSERT INTO SSW..sale VALUES ('duża', '40');
+INSERT INTO SSW..sale VALUES ('mała', '${roomS}');
+INSERT INTO SSW..sale VALUES ('duża', '${roomL}');
 SELECT * FROM SSW..sale
 
 ------------------------------------------------------------------------
 
-${generateClients()}`;
+${generateQualifications()}
+
+------------------------------------------------------------------------
+
+INSERT INTO SSW..zajecia VALUES ('K',  1, 2, 'mała', 'PN', '16:15:00');
+INSERT INTO SSW..zajecia VALUES ('T',  3, 5, 'mała', 'PN', '18:00:00');
+INSERT INTO SSW..zajecia VALUES ('A',  3, 4, 'mała', 'PN', '19:45:00');
+INSERT INTO SSW..zajecia VALUES ('C',  2, 5, 'duża', 'PN', '16:15:00');
+INSERT INTO SSW..zajecia VALUES ('TC', 1, 2, 'duża', 'PN', '18:00:00');
+INSERT INTO SSW..zajecia VALUES ('T',  2, 5, 'duża', 'PN', '19:45:00');
+
+INSERT INTO SSW..zajecia VALUES ('J',  1, 1, 'mała', 'WT', '16:15:00');
+INSERT INTO SSW..zajecia VALUES ('K',  3, 2, 'mała', 'WT', '18:00:00');
+INSERT INTO SSW..zajecia VALUES ('K',  2, 2, 'duża', 'WT', '16:15:00');
+INSERT INTO SSW..zajecia VALUES ('J',  2, 5, 'duża', 'WT', '18:00:00');
+INSERT INTO SSW..zajecia VALUES ('J',  2, 5, 'duża', 'WT', '19:45:00');
+
+INSERT INTO SSW..zajecia VALUES ('T',  2, 5, 'mała', 'ŚR', '18:00:00');
+INSERT INTO SSW..zajecia VALUES ('K',  2, 3, 'mała', 'ŚR', '19:45:00');
+INSERT INTO SSW..zajecia VALUES ('C',  1, 5, 'duża', 'ŚR', '16:15:00');
+INSERT INTO SSW..zajecia VALUES ('K',  1, 1, 'duża', 'ŚR', '18:00:00');
+INSERT INTO SSW..zajecia VALUES ('T',  1, 4, 'duża', 'ŚR', '19:45:00');
+
+INSERT INTO SSW..zajecia VALUES ('T',  1, 5, 'mała', 'CZ', '16:15:00');
+INSERT INTO SSW..zajecia VALUES ('A',  1, 4, 'mała', 'CZ', '19:45:00');
+INSERT INTO SSW..zajecia VALUES ('KF', 2, 1, 'duża', 'CZ', '16:15:00');
+INSERT INTO SSW..zajecia VALUES ('JJ', 1, 5, 'duża', 'CZ', '18:00:00');
+INSERT INTO SSW..zajecia VALUES ('KF', 3, 1, 'duża', 'CZ', '19:45:00');
+
+INSERT INTO SSW..zajecia VALUES ('TC', 1, 2, 'mała', 'PT', '16:15:00');
+INSERT INTO SSW..zajecia VALUES ('JJ', 1, 1, 'mała', 'PT', '18:00:00');
+INSERT INTO SSW..zajecia VALUES ('A',  1, 4, 'duża', 'PT', '16:15:00');
+INSERT INTO SSW..zajecia VALUES ('A',  2, 4, 'duża', 'PT', '18:00:00');
+
+INSERT INTO SSW..zajecia VALUES ('J',  3, 3, 'mała', 'SB', '10:15:00');
+INSERT INTO SSW..zajecia VALUES ('KF', 1, 4, 'duża', 'SB', '10:15:00');
+INSERT INTO SSW..zajecia VALUES ('K',  1, 3, 'duża', 'SB', '12:00:00');
+
+INSERT INTO SSW..zajecia VALUES ('TC', 2, 4, 'mała', 'NDZ', '10:15:00');
+INSERT INTO SSW..zajecia VALUES ('KF', 1, 3, 'duża', 'NDZ', '10:15:00');
+
+SELECT * FROM SSW..zajecia
+
+------------------------------------------------------------------------
+
+${generateClients()}
+
+------------------------------------------------------------------------
+
+${generateEnrollments()}`;
 
 var fs = require('fs');
-fs.writeFile('./dane.sql', sql, function (err) {
+fs.writeFile('./_dane.sql', sql, function (err) {
     if (err) {
         return console.log(err);
     }
@@ -68,6 +139,33 @@ fs.writeFile('./dane.sql', sql, function (err) {
 
 
 
+
+function generateEnrollments() {
+    var str = ' ';
+    roomsOccupied.forEach( function(el, i) {
+        var enrolled = (i % 2 ? roomL : roomS) * rand(1, 2) / 2;
+        for ( var k = 0; k < enrolled; k++ ) {
+            str += `INSERT INTO SSW..kwalifikacje VALUES ('${i + 1}', '${rand(1, numberOfClients)}', '${randDate(new Date(2017, 0, 1), new Date())}');
+ `
+        }
+    });
+    str += `SELECT * FROM SSW..zapisy
+ `;
+    return str;
+}
+
+function generateQualifications() {
+    var str = ' ';
+    for (var name in qualifications) {
+        qualifications[name].forEach(function (level, i) {
+            if (level) str += `INSERT INTO SSW..kwalifikacje VALUES ('${name}', '${i + 1}', '${level}');
+ `
+        });
+    }
+    str += `SELECT * FROM SSW..kwalifikacje
+ `;
+    return str;
+}
 
 function generateClients() {
     var str = ' ';
@@ -4455,4 +4553,9 @@ function generateClients() {
 
 function rand(from, to) {
     return Math.floor((Math.random() * (to - from + 1) + from));
+}
+
+function randDate(start, end) {
+    var date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toISOString().split('T');
+    return date[0];
 }
