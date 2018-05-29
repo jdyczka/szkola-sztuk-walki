@@ -1,7 +1,7 @@
 USE SSW;
 
 -- 01 
--- ZajÍcia prowadzone przez Tomasza Ulatowskiego
+-- Zajƒôcia prowadzone przez Tomasza Ulatowskiego
 SELECT z.id as id_zajec, z.dzienTygodniaId, CAST (z.godzina AS TIME(0)) as godzina, z.sztuki_walkid, sw.nazwa, z.poziomId, z.sala
 FROM zajecia AS z
 LEFT JOIN trenerzy AS t ON z.trenerId = t.id
@@ -9,7 +9,7 @@ LEFT JOIN sztuki_walki AS sw ON z.sztuki_walkid = sw.id
 WHERE t.imie = 'Tomasz' AND t.nazwisko = 'Ulatowski'
 
 -- 02 --
--- Liczba wolnych miejsc na zajÍciach
+-- Liczba wolnych miejsc na zajƒôciach
 SELECT
 	z.dzienTygodniaId, CAST (z.godzina AS TIME(0)) as godzina, sw.nazwa, p.nazwa,
 	(s.pojemnosc - (SELECT COUNT(*) FROM SSW..zapisy AS zap 
@@ -20,7 +20,7 @@ LEFT JOIN sztuki_walki AS sw ON z.sztuki_walkid = sw.id
 LEFT JOIN poziomy AS p ON z.poziomId = p.id
 
 -- 03 --
--- £πczna liczba osÛb zapisanych na poszczegÛlne sztuki walki
+-- ≈ÅƒÖczna liczba os√≥b zapisanych na poszczeg√≥lne sztuki walki
 SELECT COUNT(*) AS liczba_osob, zaj.sztuki_walkid
 FROM uczestnicy AS u
 LEFT JOIN zapisy AS zap ON zap.uczestnikId = u.id
@@ -29,7 +29,7 @@ GROUP BY zaj.sztuki_walkid
 
  
 -- 04 --
--- Imie i nazwisko trenera, z ktÛrym uczestnik o toøsamoúci Dorota Epicka ma zajecia 
+-- Imie i nazwisko trenera, z kt√≥rym uczestnik o to≈ºsamo≈õci Dorota Epicka ma zajecia 
 SELECT(CAST(u.imie AS varchar) + ' ' + CAST(u.nazwisko AS varchar)) AS uczestnik,
 	(CAST(t.imie AS varchar) + ' ' + CAST(t.nazwisko AS varchar)) AS trener
 FROM uczestnicy AS u
@@ -39,7 +39,7 @@ LEFT JOIN trenerzy AS t ON zaj.trenerId = t.id
 WHERE u.imie = 'Dorota' AND u.nazwisko = 'Epicka'
 
 -- 05 --
--- Liczba zajÍÊ w tygodniu kaødego trenera
+-- Liczba zajƒôƒá w tygodniu ka≈ºdego trenera
 SELECT (CAST(t.imie AS varchar) + ' ' + CAST(t.nazwisko AS varchar)) AS trener, id AS id_trenera, 
 (	SELECT COUNT(trenerId)  FROM zajecia
 	WHERE t.id=zajecia.trenerId)
@@ -47,15 +47,15 @@ SELECT (CAST(t.imie AS varchar) + ' ' + CAST(t.nazwisko AS varchar)) AS trener, 
  FROM trenerzy AS t
 
 -- 06
--- Tygodniowa wyp≥ata kaødego trenera
+-- Tygodniowa wyp≈Çata ka≈ºdego trenera
 SELECT (CAST(t.imie AS varchar) + ' ' + CAST(t.nazwisko AS varchar)) AS trener, id AS id_trenera, 
 (	SELECT (CAST(COUNT(trenerId) AS float)*1.5*t.stawka)  FROM zajecia
 	WHERE t.id=zajecia.trenerId)
-	AS wyp≥ata_tygodniowa
+	AS wyp≈Çata_tygodniowa
  FROM trenerzy AS t
 
 -- 07 --
--- Jaka czeúÊ wszystkich osob stanowiπ kobiety chodzπce na kung-fu
+-- Jaka cze≈õƒá wszystkich osob stanowiƒÖ kobiety chodzƒÖce na kung-fu
 SELECT ROUND((COUNT(*) * 1.0) / (SELECT COUNT(*) FROM uczestnicy), 2)
 FROM uczestnicy AS u
 JOIN zapisy AS z ON z.uczestnikId = u.id
@@ -64,7 +64,7 @@ JOIN sztuki_walki AS sw ON z2.sztuki_walkid = sw.id
 WHERE sw.nazwa = 'kung-fu' AND u.plec = 'K'
 
 -- 08
--- uczestnicy, ktÛrzy nie sπ zapisani na øadne zajÍcia
+-- uczestnicy, kt√≥rzy nie sƒÖ zapisani na ≈ºadne zajƒôcia
 SELECT *
 FROM uczestnicy AS u
 WHERE NOT EXISTS (
@@ -73,12 +73,12 @@ WHERE NOT EXISTS (
 	WHERE z.uczestnikId = u.id)
 
 -- 09 --
--- årednia stawka godzinowa wszystkich trenerÛw
+-- ≈örednia stawka godzinowa wszystkich trener√≥w
 SELECT AVG(t.stawka)
 FROM trenerzy AS t
 
 -- 10 --
--- trenerzy oraz jezyki w jakich potrafia nauczaÊ wraz z poziomem
+-- trenerzy oraz jezyki w jakich potrafia nauczaƒá wraz z poziomem
 SELECT t.imie, t.nazwisko, sw.nazwa, p.nazwa
 FROM kwalifikacje AS k
 LEFT JOIN trenerzy AS t ON t.id = k.trenerId
@@ -86,8 +86,8 @@ LEFT JOIN sztuki_walki AS sw ON sw.id = k.sztuki_walkid
 LEFT JOIN poziomy AS p ON p.id = k.poziomId
 
 
--- 11 èLE
--- Sprawdzanie, czy dla kaødych wpisanych zajÍÊ istnieje przynajmniej jeden uczestnik
+-- 11 ≈πLE
+-- Sprawdzanie, czy dla ka≈ºdych wpisanych zajƒôƒá istnieje przynajmniej jeden uczestnik
 SELECT zajecia
 FROM zajecia AS z 
 LEFT JOIN uczestnicy as u ON u.zajeciaId=z.id

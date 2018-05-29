@@ -47,8 +47,8 @@ SELECT * FROM SSW..poziomy
 INSERT INTO SSW..trenerzy VALUES ('Piotr', 'Rabęcki', 'prabecki@onet.pl', '501501501', NULL, '1999-03-15', NULL, 30.00 );
 INSERT INTO SSW..trenerzy VALUES ('Robert', 'Smoliński', 'rsmolinski@gmail.pl', '502502502', 1, '2000-10-12', NULL, 35.00 );
 INSERT INTO SSW..trenerzy VALUES ('Sylwia', 'Trzeszczak', 'strzeszczak@interia.pl', '503503503', 1, '2002-04-03', NULL, 40.00 );
-INSERT INTO SSW..trenerzy VALUES ('Tomasz', 'Ulatowski', 'tulatowski@gmail.pl', '504504504', 1, '2005-08-25', NULL, 50.00 );
 INSERT INTO SSW..trenerzy VALUES ('Urszula', 'Wieteska', 'uwieteska@onet.pl', '505505505', 1, '1998-07-08', NULL, 50.00 );
+INSERT INTO SSW..trenerzy VALUES ('Tomasz', 'Ulatowski', 'tulatowski@gmail.pl', '504504504', 1, '2005-08-25', NULL, 50.00 );
 SELECT * FROM SSW..trenerzy
 
 ------------------------------------------------------------------------
@@ -145,7 +145,7 @@ function generateEnrollments() {
     roomsOccupied.forEach( function(el, i) {
         var enrolled = (i % 2 ? roomL : roomS) * rand(1, 2) / 2;
         for ( var k = 0; k < enrolled; k++ ) {
-            str += `INSERT INTO SSW..kwalifikacje VALUES ('${i + 1}', '${rand(1, numberOfClients)}', '${randDate(new Date(2017, 0, 1), new Date())}');
+            str += `INSERT INTO SSW..zapisy VALUES (${i + 1}, ${rand(1, numberOfClients)}, '${randDate(new Date(2017, 0, 1), new Date())}');
  `
         }
     });

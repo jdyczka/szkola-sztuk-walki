@@ -100,7 +100,7 @@ CREATE TABLE SSW..uczestnicy (
 
 	CONSTRAINT uczestnicyId_pk PRIMARY KEY (id),
 	CONSTRAINT uczestnicyPesel_unique UNIQUE (pesel),
-	CONSTRAINT uczestnicyPesel_check CHECK (pesel LIKE ('[0-9][0-9][0-1][0-9][0-3][0-9][0-9][0-9][0-9][0-9][0-9]')),
+	CONSTRAINT uczestnicyPesel_check CHECK (pesel LIKE ('[0-9][0-9][0-3][0-9][0-3][0-9][0-9][0-9][0-9][0-9][0-9]')),
 	CONSTRAINT uczestnicyPlec_check CHECK (plec IN ('M', 'K'))
 );
 GO
