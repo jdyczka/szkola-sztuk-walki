@@ -85,12 +85,12 @@ WHERE NOT EXISTS (
 
 -- 09 --
 -- Średnia stawka godzinowa wszystkich trenerów
-SELECT AVG(t.stawka)
+SELECT AVG(t.stawka) as srednia_stawka
 FROM trenerzy AS t
 
 -- 10 --
--- trenerzy oraz jezyki w jakich potrafia nauczać wraz z poziomem
-SELECT t.imie, t.nazwisko, sw.nazwa, p.nazwa
+-- trenerzy oraz sztuki walki, jakich uczą wraz z maksymalnym poziomem
+SELECT t.imie, t.nazwisko, sw.nazwa, p.nazwa as max_poziom
 FROM kwalifikacje AS k
 LEFT JOIN trenerzy AS t ON t.id = k.trenerId
 LEFT JOIN sztuki_walki AS sw ON sw.id = k.sztuki_walkid
@@ -104,3 +104,58 @@ FROM zajecia AS z
 LEFT JOIN uczestnicy as u ON u.zajeciaId=z.id
 GROUP BY zajecia
 HAVING COUNT(z.id)=0
+
+-- 12 --
+-- w które dni tygodnia najwięcej osób przychodzi na zajecia
+SELECT 
+	t.nazwa,
+	(
+		SELECT COUNT(zp.zajeciaId)
+		FROM zapisy zp
+		WHERE zp.zajeciaId IN 
+		(
+			SELECT zj.id
+			FROM zajecia zj
+			WHERE zj.dzienTygodniaId = t.id
+		)
+	) as ilosc_osob
+FROM dni_tygodnia t 
+ORDER BY ilosc_osob DESC
+
+-- 13 --
+-- rozkład ilości osób na poszczególnych poziomach
+SELECT 
+	p.nazwa,
+	(
+		SELECT COUNT(zp.zajeciaId)
+		FROM zapisy zp
+		WHERE zp.zajeciaId IN 
+		(
+			SELECT zj.id
+			FROM zajecia zj
+			WHERE zj.poziomId = p.id
+		)
+	) as ilosc_osob
+FROM poziomy p
+ORDER BY ilosc_osob DESC
+
+-- 14 --
+-- która sztuka walki jest najbardziej popularna wśród osób na różnych poziomach
+-- SELECT 
+-- 	p.nazwa, 
+-- 	(
+-- 		SELECT sw.nazwa
+-- 		FROM  sztuki_walki sw
+-- 		WHERE sw.id IN 
+-- 		(
+-- 			SELECT COUNT(zp.zajeciaId)
+-- 			FROM zapisy zp
+-- 			WHERE zp.zajeciaId IN 
+-- 			(
+-- 				SELECT zj.id
+-- 				FROM zajecia zj
+-- 				WHERE zj.poziomId = p.id
+-- 			)
+-- 		) as ilosc_osob
+-- 	)
+-- FROM poziomy p
