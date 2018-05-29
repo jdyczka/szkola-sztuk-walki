@@ -67,7 +67,7 @@ SELECT (CAST(t.imie AS varchar) + ' ' + CAST(t.nazwisko AS varchar)) AS trener, 
 
 -- 07 --
 -- jaka cześć wszystkich osob stanowią kobiety chodzące na kung-fu
-SELECT ROUND((COUNT(*) * 1.0) / (SELECT COUNT(*) FROM uczestnicy), 2)
+SELECT ROUND((COUNT(*) * 1.0) / (SELECT COUNT(*) FROM uczestnicy), 2) AS kungfu_kobiety
 FROM uczestnicy AS u
 JOIN zapisy AS z ON z.uczestnikId = u.id
 JOIN zajecia AS z2 ON z.zajeciaId = z2.id
