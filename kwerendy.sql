@@ -40,14 +40,14 @@ GROUP BY zaj.sztuki_walkid
 
  
 -- 04 --
--- imie i nazwisko trenera, z którym ma zajecia uczestnik Helena Danielewska 
+-- imie i nazwisko trenera, z którym ma zajecia uczestnik o konkretnym imieniu i nazwisku 
 SELECT(CAST(u.imie AS varchar) + ' ' + CAST(u.nazwisko AS varchar)) AS uczestnik,
 	(CAST(t.imie AS varchar) + ' ' + CAST(t.nazwisko AS varchar)) AS trener
 FROM uczestnicy AS u
 LEFT JOIN zapisy AS zap ON zap.uczestnikId = u.id
 LEFT JOIN zajecia AS zaj ON zaj.id = zap.zajeciaId
 LEFT JOIN trenerzy AS t ON zaj.trenerId = t.id
-WHERE u.imie = 'Helena' AND u.nazwisko = 'Danielewska'
+WHERE u.imie = 'Lidia' AND u.nazwisko = 'Zawadka'
 
 -- 05 --
 -- liczba zajęć w tygodniu prowadzonych przez każdego trenera
