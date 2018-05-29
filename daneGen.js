@@ -18,9 +18,9 @@ const roomsOccupied = [
     2, 3, //WT
     2, 3, //SR
     2, 3, //CZW
-    2, 3, //PT
+    2, 2, //PT
     1, 2, //SB
-    1, 1, //NDZ
+    1, 1 //NDZ
 ];
 
 
@@ -142,11 +142,14 @@ fs.writeFile('./_dane.sql', sql, function (err) {
 
 function generateEnrollments() {
     var str = ' ';
-    roomsOccupied.forEach( function(el, i) {
-        var enrolled = (i % 2 ? roomL : roomS) * rand(1, 2) / 2;
-        for ( var k = 0; k < enrolled; k++ ) {
-            str += `INSERT INTO SSW..zapisy VALUES (${i + 1}, ${rand(1, numberOfClients)}, '${randDate(new Date(2017, 0, 1), new Date())}');
+    var id = 1;
+    roomsOccupied.forEach(function (el, i) {
+        for (var n = 0; n < el; n++, id++) {
+            var enrolled = Math.floor((i % 2 ? roomL : roomS) * rand(50, 100) / 100);
+            for (var k = 0; k < enrolled; k++) {
+                str += `INSERT INTO SSW..zapisy VALUES (${id}, ${rand(1, numberOfClients)}, '${randDate(new Date(2017, 0, 1), new Date())}');
  `
+            }
         }
     });
     str += `SELECT * FROM SSW..zapisy

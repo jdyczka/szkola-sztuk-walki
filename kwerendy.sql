@@ -11,13 +11,24 @@ WHERE t.imie = 'Tomasz' AND t.nazwisko = 'Ulatowski'
 -- 02 --
 -- Liczba wolnych miejsc na zajęciach
 SELECT
-	z.dzienTygodniaId, CAST (z.godzina AS TIME(0)) as godzina, sw.nazwa, p.nazwa,
-	(s.pojemnosc - (SELECT COUNT(*) FROM SSW..zapisy AS zap 
-		WHERE zap.zajeciaId = z.id)) AS wolne_miejsca	
+	z.id,
+	z.dzienTygodniaId, 
+	CAST (z.godzina AS TIME(0)) as godzina, 
+	z.sala,
+	sw.nazwa, 
+	p.nazwa as poziom,
+	(s.pojemnosc - 
+		(
+			SELECT COUNT(*) 
+			FROM SSW..zapisy AS zap 
+			WHERE zap.zajeciaId = z.id
+		)
+	) AS wolne_miejsca	
 FROM zajecia AS z
 LEFT JOIN sale AS s ON z.sala = s.nazwa
 LEFT JOIN sztuki_walki AS sw ON z.sztuki_walkid = sw.id
 LEFT JOIN poziomy AS p ON z.poziomId = p.id
+order by z.id
 
 -- 03 --
 -- Łączna liczba osób zapisanych na poszczególne sztuki walki
