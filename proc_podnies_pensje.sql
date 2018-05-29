@@ -1,5 +1,5 @@
--- Procedura podnoszπca stawkÍ o podanπ kwotÍ trenerom, ktÛrzy prowadzπ zajÍcia z okreúlonych sztuk walki
--- Pierwszy parametr to wysokoúÊ podwyøki, drugi to sztuka walki.
+-- Procedura podnoszƒÖca stawkƒô o podanƒÖ kwotƒô trenerom, kt√≥rzy prowadzƒÖ zajƒôcia z okre≈õlonych sztuk walki
+-- Pierwszy parametr to wysoko≈õƒá podwy≈ºki, drugi to sztuka walki.
 
 IF EXISTS (SELECT 1 FROM sys.objects WHERE TYPE = 'P' AND name = 'podniesStawke')
 DROP PROCEDURE podniesStawke;
@@ -36,12 +36,12 @@ BEGIN
 
 	INSERT INTO SSW..dziennik_zdarzen 
 	VALUES ('trenerzy',
-			'Wprowadzono podwyøke: ' + CAST(@pozwyzka AS varchar) +' z≥ dla trenerÛw w liczbie: ' + CAST(@iterator AS varchar),
+			'Wprowadzono podwy≈ºke: ' + CAST(@pozwyzka AS varchar) +' z≈Ç dla trener√≥w w liczbie: ' + CAST(@iterator AS varchar),
 			GETDATE())
 			
 END
 
--- WYWO£ANIE --
+-- WYWO≈ÅANIE --
 BEGIN
 	EXEC podniesStawke 3.00, 'karate';
 END
