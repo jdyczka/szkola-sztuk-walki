@@ -141,21 +141,21 @@ ORDER BY ilosc_osob DESC
 
 -- 14 --
 -- która sztuka walki jest najbardziej popularna wśród osób na różnych poziomach
--- SELECT 
--- 	p.nazwa, 
--- 	(
--- 		SELECT sw.nazwa
--- 		FROM  sztuki_walki sw
--- 		WHERE sw.id IN 
--- 		(
--- 			SELECT COUNT(zp.zajeciaId)
--- 			FROM zapisy zp
--- 			WHERE zp.zajeciaId IN 
--- 			(
--- 				SELECT zj.id
--- 				FROM zajecia zj
--- 				WHERE zj.poziomId = p.id
--- 			)
--- 		) as ilosc_osob
--- 	)
--- FROM poziomy p
+SELECT 
+	p.nazwa AS poziom, 
+	(
+		SELECT sw.nazwa
+		FROM  sztuki_walki sw
+		WHERE sw.id IN 
+		(
+			SELECT COUNT(zp.zajeciaId)
+			FROM zapisy zp
+			WHERE zp.zajeciaId IN 
+			(
+				SELECT zj.id
+				FROM zajecia zj
+				WHERE zj.poziomId = p.id
+			)
+		)
+	) AS sztuka_walki
+FROM poziomy p
